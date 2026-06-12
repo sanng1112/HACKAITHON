@@ -41,5 +41,23 @@ class TestGovOne(unittest.TestCase):
         texts = [p.text for p in doc.paragraphs]
         self.assertTrue(any('Đề tài 6' in t for t in texts))
 
+    def test_section1_exists(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts = [p.text.strip().upper() for p in doc.paragraphs if p.text.strip()]
+        self.assertTrue(any('ĐẶT VẤN ĐỀ' in t for t in texts))
+
+    def test_section1_has_painpoints_table(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        for table in doc.tables:
+            if '#' in table.rows[0].cells[0].text:
+                self.assertGreaterEqual(len(table.rows), 5)
+                return
+        self.fail("Không tìm thấy bảng pain-point")
+
+    def test_section1_has_why_ai(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts = [p.text.strip().upper() for p in doc.paragraphs if p.text.strip()]
+        self.assertTrue(any('TẠI SAO AI' in t for t in texts))
+
 if __name__ == '__main__':
     unittest.main()
