@@ -74,5 +74,16 @@ class TestGovOne(unittest.TestCase):
         texts = [p.text for p in doc.paragraphs]
         self.assertTrue(any('Bước 1' in t for t in texts))
 
+    def test_section3_exists(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts = [p.text.strip().upper() for p in doc.paragraphs if p.text.strip()]
+        self.assertTrue(any('THIẾT KẾ' in t for t in texts))
+
+    def test_section3_has_4_layers(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts_upper = [p.text.upper() for p in doc.paragraphs]
+        for layer in ['USER LAYER', 'AI CORE', 'PROCESSING', 'DATA LAYER']:
+            self.assertTrue(any(layer in t for t in texts_upper))
+
 if __name__ == '__main__':
     unittest.main()
