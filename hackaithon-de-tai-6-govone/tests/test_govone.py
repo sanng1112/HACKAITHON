@@ -20,5 +20,26 @@ class TestGovOne(unittest.TestCase):
         self.assertEqual(img.size, (400, 400))
         self.assertEqual(img.mode, 'RGBA')
 
+    def test_proposal_created(self):
+        from docx import Document
+        proposal_path = os.path.join(self.project_dir, 'proposal.docx')
+        self.assertTrue(os.path.isfile(proposal_path))
+        doc = Document(proposal_path)
+        self.assertGreaterEqual(len(doc.paragraphs), 10)
+
+    def test_cover_page_has_title(self):
+        from docx import Document
+        proposal_path = os.path.join(self.project_dir, 'proposal.docx')
+        doc = Document(proposal_path)
+        texts = [p.text for p in doc.paragraphs]
+        self.assertTrue(any('GovOne' in t for t in texts))
+
+    def test_cover_page_has_topic(self):
+        from docx import Document
+        proposal_path = os.path.join(self.project_dir, 'proposal.docx')
+        doc = Document(proposal_path)
+        texts = [p.text for p in doc.paragraphs]
+        self.assertTrue(any('Đề tài 6' in t for t in texts))
+
 if __name__ == '__main__':
     unittest.main()
