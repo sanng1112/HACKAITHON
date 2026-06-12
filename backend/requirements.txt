@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy[asyncio]
+alembic
+psycopg2-binary
+asyncpg
+pydantic
+pydantic-settings
+redis
+pytest
+pytest-asyncio
