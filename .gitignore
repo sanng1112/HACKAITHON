@@ -42,3 +42,7 @@ models/
 # Build
 build/
 *.pyc
+
+.pycache/
+.env.example/
+.commandcode/
