@@ -59,5 +59,20 @@ class TestGovOne(unittest.TestCase):
         texts = [p.text.strip().upper() for p in doc.paragraphs if p.text.strip()]
         self.assertTrue(any('TẠI SAO AI' in t for t in texts))
 
+    def test_section2_exists(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts = [p.text.strip().upper() for p in doc.paragraphs if p.text.strip()]
+        self.assertTrue(any('GIẢI PHÁP' in t for t in texts))
+
+    def test_section2_has_voice_and_ocr(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts = [p.text.upper() for p in doc.paragraphs]
+        self.assertTrue(any('STT' in t for t in texts) and any('OCR' in t for t in texts))
+
+    def test_section2_has_user_story(self):
+        doc = Document(os.path.join(self.project_dir, 'proposal.docx'))
+        texts = [p.text for p in doc.paragraphs]
+        self.assertTrue(any('Bước 1' in t for t in texts))
+
 if __name__ == '__main__':
     unittest.main()
