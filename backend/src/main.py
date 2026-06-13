@@ -19,6 +19,19 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     
+    # ─── Register AI routers (Round 4) ────────────────────────────────
+    from src.ai.api.ocr_router import router as ocr_router
+    from src.ai.api.stt_router import router as stt_router
+    from src.ai.api.nlp_router import router as nlp_router
+    from src.ai.api.auto_fill_router import router as auto_fill_router
+    from src.ai.api.health_router import router as health_router
+    
+    app.include_router(ocr_router)
+    app.include_router(stt_router)
+    app.include_router(nlp_router)
+    app.include_router(auto_fill_router)
+    app.include_router(health_router)
+    
     return app
 
 
