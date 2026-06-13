@@ -1,2 +1,48 @@
+# Python
 __pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+
+# Node
+node_modules/
+.next/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+
+# Database
+*.db
+*.sqlite3
+
+# AI Models
+models/
+*.pt
+*.pth
+*.bin
+
+# Build
+build/
 *.pyc
+
+.pycache/
+.env.example/
+.commandcode/
