@@ -7,26 +7,29 @@ from src.models.ho_so import HoSo, TrangThaiHoSoEnum
 from src.models.lich_hen import LichHen, TrangThaiLichHenEnum
 from src.models.thong_bao import ThongBao, LoaiThongBaoEnum
 from src.database.base import Base
+from src.utils.security import hash_password
+
+PASS = hash_password("123456")
 
 async def seed_data():
     async with async_session_maker() as db:
         # Seed Admin
         admin = User(
-            email="admin@govone.vn", password_hash="hashed_admin_123", ho_ten="Admin",
+            email="admin@govone.vn", password_hash=PASS, ho_ten="Admin",
             role=RoleEnum.admin, so_cccd="000000000000"
         )
         db.add(admin)
-        
+
         # Seed Can Bo (3)
         can_bos = [
-            User(email=f"canbo{i}@govone.vn", password_hash="hashed", ho_ten=f"Cán bộ {i}", role=RoleEnum.officer, so_cccd=f"10000000000{i}")
+            User(email=f"canbo{i}@govone.vn", password_hash=PASS, ho_ten=f"Cán bộ {i}", role=RoleEnum.officer, so_cccd=f"10000000000{i}")
             for i in range(1, 4)
         ]
         db.add_all(can_bos)
-        
+
         # Seed Cong Dan (5)
         cong_dans = [
-            User(email=f"congdan{i}@govone.vn", password_hash="hashed", ho_ten=f"Công dân {i}", role=RoleEnum.citizen, so_cccd=f"20000000000{i}")
+            User(email=f"congdan{i}@govone.vn", password_hash=PASS, ho_ten=f"Công dân {i}", role=RoleEnum.citizen, so_cccd=f"20000000000{i}")
             for i in range(1, 6)
         ]
         db.add_all(cong_dans)

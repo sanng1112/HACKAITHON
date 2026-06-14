@@ -16,9 +16,9 @@ async def health_check():
     Trả về trạng thái load + metrics của OCR, STT, NLP models.
     Dùng cho monitoring và readiness probe của k8s/Docker.
     """
-    from backend.src.ai.services.ocr_service import get_health as ocr_health
-    from backend.src.ai.services.stt_service import get_health as stt_health
-    from backend.src.ai.services.nlp_service import get_health as nlp_health
+    from src.ai.services.ocr_service import get_health as ocr_health
+    from src.ai.services.stt_service import get_health as stt_health
+    from src.ai.services.nlp_service import get_health as nlp_health
 
     statuses = {
         "ocr": ocr_health(),
@@ -55,15 +55,15 @@ async def reload_models(model: str = "all"):
             errors.append(f"{name}: {str(e)}")
 
     if model in ("all", "ocr"):
-        from backend.src.ai.services.ocr_service import get_ocr_model
+        from src.ai.services.ocr_service import get_ocr_model
         try_reload("ocr", get_ocr_model)
 
     if model in ("all", "stt"):
-        from backend.src.ai.services.stt_service import get_stt_model
+        from src.ai.services.stt_service import get_stt_model
         try_reload("stt", get_stt_model)
 
     if model in ("all", "nlp"):
-        from backend.src.ai.services.nlp_service import get_nlp_model
+        from src.ai.services.nlp_service import get_nlp_model
         try_reload("nlp", get_nlp_model)
 
     return {
@@ -85,7 +85,7 @@ async def get_task_status(task_id: str):
     """
     try:
         from celery.result import AsyncResult
-        from backend.src.ai.tasks.celery_app import celery_app
+        from src.ai.tasks.celery_app import celery_app
 
         result = AsyncResult(task_id, app=celery_app)
         status = result.status

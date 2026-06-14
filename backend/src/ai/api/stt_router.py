@@ -6,8 +6,8 @@ import logging
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
-from backend.src.ai.config.settings import ALLOWED_AUDIO_TYPES, MAX_AUDIO_SIZE_MB
-from backend.src.ai.services.stt_service import transcribe_audio, transcribe_and_map_to_form
+from src.ai.config.settings import ALLOWED_AUDIO_TYPES, MAX_AUDIO_SIZE_MB
+from src.ai.services.stt_service import transcribe_audio, transcribe_and_map_to_form
 
 logger = logging.getLogger(__name__)
 
@@ -89,7 +89,7 @@ async def stt_async(file: UploadFile = File(...)):
     audio_bytes = await file.read()
     audio_b64 = base64.b64encode(audio_bytes).decode()
 
-    from backend.src.ai.tasks.stt_tasks import task_transcribe
+    from src.ai.tasks.stt_tasks import task_transcribe
     task = task_transcribe.delay(audio_b64)
 
     return {

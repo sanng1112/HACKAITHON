@@ -32,18 +32,17 @@ def create_app() -> FastAPI:
     setup_error_handlers(app)
     app.add_middleware(LoggingMiddleware)
 
-    # ─── AI routers (Round 4) ──────────────────────────────────────
-    from src.ai.api.ocr_router import router as ocr_router
-    from src.ai.api.stt_router import router as stt_router
-    from src.ai.api.nlp_router import router as nlp_router
-    from src.ai.api.auto_fill_router import router as auto_fill_router
-    from src.ai.api.health_router import router as health_router
-
-    app.include_router(ocr_router)
-    app.include_router(stt_router)
-    app.include_router(nlp_router)
-    app.include_router(auto_fill_router)
-    app.include_router(health_router)
+    # ─── AI routers (Round 4) — tạm disable, chưa có src.ai.models ──
+    # from src.ai.api.ocr_router import router as ocr_router
+    # from src.ai.api.stt_router import router as stt_router
+    # from src.ai.api.nlp_router import router as nlp_router
+    # from src.ai.api.auto_fill_router import router as auto_fill_router
+    # from src.ai.api.health_router import router as health_router
+    # app.include_router(ocr_router)
+    # app.include_router(stt_router)
+    # app.include_router(nlp_router)
+    # app.include_router(auto_fill_router)
+    # app.include_router(health_router)
 
     # ─── Business routers (Round 2) ────────────────────────────────
     from src.api.auth import router as auth_router

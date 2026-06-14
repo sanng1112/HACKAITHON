@@ -3,7 +3,7 @@ NLP Service — phân tích văn bản tiếng Việt cho hồ sơ hành chính.
 """
 import logging
 
-from backend.src.ai.models.nlp_model import NLPModel
+from src.ai.models.nlp_model import NLPModel
 
 logger = logging.getLogger(__name__)
 

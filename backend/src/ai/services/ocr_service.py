@@ -4,12 +4,12 @@ OCR Service — pipeline hoàn chỉnh từ ảnh → text → thông tin có c�
 import hashlib
 import logging
 
-from backend.src.ai.models.ocr_model import OCRModel
-from backend.src.ai.utils.image_utils import (
+from src.ai.models.ocr_model import OCRModel
+from src.ai.utils.image_utils import (
     classify_document_type,
     preprocess_for_ocr,
 )
-from backend.src.ai.utils.text_utils import (
+from src.ai.utils.text_utils import (
     calculate_confidence_score,
     extract_structured_fields,
 )

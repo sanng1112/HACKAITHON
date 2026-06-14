@@ -1,5 +1,10 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
+import { AuthProvider } from '@/hooks/useAuth';
+import { ToastProvider } from '@/components/Toast';
+
+const inter = Inter({ subsets: ['latin', 'vietnamese'] });
 
 export const metadata: Metadata = {
   title: 'GovOne — Hệ thống Quản lý Hành chính Công Thông minh',
@@ -14,8 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi">
-      <body className="min-h-screen bg-gray-50">
-        {children}
+      <body className={`min-h-screen bg-gray-50 ${inter.className}`}>
+        <ToastProvider>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );

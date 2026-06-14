@@ -8,8 +8,8 @@ from typing import Optional
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from pydantic import BaseModel
 
-from backend.src.ai.config.settings import ALLOWED_IMAGE_TYPES, MAX_IMAGE_SIZE_MB
-from backend.src.ai.services.auto_fill_service import auto_fill_from_image, validate_form_data
+from src.ai.config.settings import ALLOWED_IMAGE_TYPES, MAX_IMAGE_SIZE_MB
+from src.ai.services.auto_fill_service import auto_fill_from_image, validate_form_data
 
 logger = logging.getLogger(__name__)
 
@@ -75,7 +75,7 @@ async def auto_fill_async(
     image_bytes = await file.read()
     image_b64 = base64.b64encode(image_bytes).decode()
 
-    from backend.src.ai.tasks.ocr_tasks import task_auto_fill
+    from src.ai.tasks.ocr_tasks import task_auto_fill
     task = task_auto_fill.delay(image_b64, target_form)
 
     return {

@@ -4,7 +4,7 @@ Celery tasks cho OCR — xử lý bất đồng bộ, không block API.
 import asyncio
 import logging
 
-from backend.src.ai.tasks.celery_app import celery_app
+from src.ai.tasks.celery_app import celery_app
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +37,7 @@ def task_ocr_image(self, image_b64: str, aggressive: bool = False) -> dict:
     import base64
     try:
         image_bytes = base64.b64decode(image_b64)
-        from backend.src.ai.services.ocr_service import process_image
+        from src.ai.services.ocr_service import process_image
         return _run_async(process_image(image_bytes, aggressive_preprocess=aggressive))
     except Exception as exc:
         logger.error(f"OCR task lỗi: {exc}")
@@ -62,7 +62,7 @@ def task_ocr_batch(self, images_b64: list[str]) -> list[dict]:
     import base64
     try:
         images = [base64.b64decode(b64) for b64 in images_b64]
-        from backend.src.ai.services.ocr_service import process_batch
+        from src.ai.services.ocr_service import process_batch
         return _run_async(process_batch(images))
     except Exception as exc:
         logger.error(f"OCR batch task lỗi: {exc}")
@@ -80,7 +80,7 @@ def task_auto_fill(self, image_b64: str, target_form: str = None) -> dict:
     import base64
     try:
         image_bytes = base64.b64decode(image_b64)
-        from backend.src.ai.services.auto_fill_service import auto_fill_from_image
+        from src.ai.services.auto_fill_service import auto_fill_from_image
         return _run_async(auto_fill_from_image(image_bytes, target_form=target_form))
     except Exception as exc:
         logger.error(f"Auto-fill task lỗi: {exc}")

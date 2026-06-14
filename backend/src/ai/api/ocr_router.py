@@ -7,8 +7,8 @@ from typing import Optional
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
-from backend.src.ai.config.settings import ALLOWED_IMAGE_TYPES, MAX_IMAGE_SIZE_MB
-from backend.src.ai.services.ocr_service import process_batch, process_image
+from src.ai.config.settings import ALLOWED_IMAGE_TYPES, MAX_IMAGE_SIZE_MB
+from src.ai.services.ocr_service import process_batch, process_image
 
 logger = logging.getLogger(__name__)
 
@@ -98,7 +98,7 @@ async def ocr_async(
     image_bytes = await file.read()
     image_b64 = base64.b64encode(image_bytes).decode()
 
-    from backend.src.ai.tasks.ocr_tasks import task_ocr_image
+    from src.ai.tasks.ocr_tasks import task_ocr_image
     task = task_ocr_image.delay(image_b64, aggressive)
 
     return {

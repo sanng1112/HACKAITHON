@@ -4,7 +4,7 @@ Celery tasks cho NLP.
 import asyncio
 import logging
 
-from backend.src.ai.tasks.celery_app import celery_app
+from src.ai.tasks.celery_app import celery_app
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ def _run_async(coro):
 def task_analyze_text(self, text: str) -> dict:
     """Task NLP phân tích text."""
     try:
-        from backend.src.ai.services.nlp_service import analyze_text
+        from src.ai.services.nlp_service import analyze_text
         return _run_async(analyze_text(text))
     except Exception as exc:
         logger.error(f"NLP analyze task lỗi: {exc}")
@@ -42,7 +42,7 @@ def task_analyze_text(self, text: str) -> dict:
 def task_classify_procedure(self, text: str) -> dict:
     """Task NLP phân loại thủ tục."""
     try:
-        from backend.src.ai.services.nlp_service import classify_procedure
+        from src.ai.services.nlp_service import classify_procedure
         return _run_async(classify_procedure(text))
     except Exception as exc:
         logger.error(f"NLP classify task lỗi: {exc}")

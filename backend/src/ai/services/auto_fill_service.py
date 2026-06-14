@@ -11,9 +11,9 @@ Flow:
 import logging
 from typing import Optional
 
-from backend.src.ai.services.nlp_service import analyze_text
-from backend.src.ai.services.ocr_service import process_image
-from backend.src.ai.utils.text_utils import calculate_confidence_score
+from src.ai.services.nlp_service import analyze_text
+from src.ai.services.ocr_service import process_image
+from src.ai.utils.text_utils import calculate_confidence_score
 
 logger = logging.getLogger(__name__)
 

@@ -3,9 +3,9 @@ STT Service — pipeline chuyển audio → văn bản tiếng Việt.
 """
 import logging
 
-from backend.src.ai.models.stt_model import STTModel
-from backend.src.ai.utils.audio_utils import prepare_audio, validate_audio_size
-from backend.src.ai.config.settings import MAX_AUDIO_SIZE_MB
+from src.ai.models.stt_model import STTModel
+from src.ai.utils.audio_utils import prepare_audio, validate_audio_size
+from src.ai.config.settings import MAX_AUDIO_SIZE_MB
 
 logger = logging.getLogger(__name__)
 
@@ -68,7 +68,7 @@ async def transcribe_and_map_to_form(audio_bytes: bytes, form_fields: list[str])
     text = transcription.get("text", "")
 
     # Map đơn giản — thực tế nên dùng NLP service
-    from backend.src.ai.utils.text_utils import extract_structured_fields
+    from src.ai.utils.text_utils import extract_structured_fields
     all_fields = extract_structured_fields(text)
 
     mapped = {field: all_fields.get(field) for field in form_fields}

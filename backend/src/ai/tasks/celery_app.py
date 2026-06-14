@@ -3,7 +3,7 @@ Celery app — cấu hình async task queue cho GovOne AI layer.
 """
 from celery import Celery
 
-from backend.src.ai.config.settings import (
+from src.ai.config.settings import (
     CELERY_BROKER_URL,
     CELERY_RESULT_BACKEND,
     CELERY_TASK_TIMEOUT,

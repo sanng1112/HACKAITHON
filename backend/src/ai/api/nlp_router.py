@@ -6,7 +6,7 @@ import logging
 from fastapi import APIRouter, Body, HTTPException
 from pydantic import BaseModel, Field
 
-from backend.src.ai.services.nlp_service import analyze_text, classify_procedure, extract_priority
+from src.ai.services.nlp_service import analyze_text, classify_procedure, extract_priority
 
 logger = logging.getLogger(__name__)
 
