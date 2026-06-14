@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-govone: #4f46e5;
+    --color-govone-light: #eef2ff;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* Status Badges */
+  .badge-cho-tiep-nhan {
+    @apply bg-gray-100 text-gray-700 border border-gray-200;
+  }
+  .badge-cho-xu-ly {
+    @apply bg-yellow-50 text-yellow-700 border border-yellow-200;
+  }
+  .badge-dang-xu-ly {
+    @apply bg-blue-50 text-blue-700 border border-blue-200;
+  }
+  .badge-da-xu-ly {
+    @apply bg-green-50 text-green-700 border border-green-200;
+  }
+  .badge-tu-choi {
+    @apply bg-red-50 text-red-700 border border-red-200;
+  }
+  .badge-cho-bo-sung {
+    @apply bg-orange-50 text-orange-700 border border-orange-200;
+  }
+  .badge-da-bo-sung {
+    @apply bg-teal-50 text-teal-700 border border-teal-200;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
+  }
+  .card-hover {
+    @apply card hover:shadow-md hover:border-gray-300 transition-all duration-200;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-govone-600 text-white 
+           font-medium rounded-lg hover:bg-govone-700 focus:outline-none focus:ring-2 
+           focus:ring-govone-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-colors duration-150 text-sm;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-gray-700 
+           font-medium rounded-lg border border-gray-300 hover:bg-gray-50 focus:outline-none 
+           focus:ring-2 focus:ring-govone-500 focus:ring-offset-2 disabled:opacity-50 
+           disabled:cursor-not-allowed transition-colors duration-150 text-sm;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-red-600 text-white 
+           font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 
+           focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-colors duration-150 text-sm;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 text-gray-600 
+           font-medium rounded-lg hover:bg-gray-100 focus:outline-none disabled:opacity-50 
+           disabled:cursor-not-allowed transition-colors duration-150 text-sm;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* Form */
+  .form-input {
+    @apply block w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm 
+           placeholder-gray-400 focus:border-govone-500 focus:outline-none focus:ring-1 
+           focus:ring-govone-500 disabled:bg-gray-50 disabled:text-gray-500 transition-colors;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+  .form-error {
+    @apply text-xs text-red-600 mt-1;
+  }
+  .form-select {
+    @apply form-input appearance-none cursor-pointer;
+  }
+  .form-textarea {
+    @apply form-input resize-y min-h-[80px];
+  }
+
+  /* Layout */
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6;
+  }
+  .page-header {
+    @apply flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  .page-subtitle {
+    @apply text-sm text-gray-500 mt-1;
+  }
+
+  /* Table */
+  .table-container {
+    @apply overflow-x-auto rounded-xl border border-gray-200;
+  }
+  .table-base {
+    @apply min-w-full divide-y divide-gray-200;
+  }
+  .table-header {
+    @apply bg-gray-50 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider;
+  }
+  .table-header th {
+    @apply px-4 py-3;
+  }
+  .table-body {
+    @apply divide-y divide-gray-200 bg-white;
+  }
+  .table-body td {
+    @apply px-4 py-3 text-sm text-gray-700 whitespace-nowrap;
+  }
+  .table-row {
+    @apply hover:bg-gray-50 transition-colors cursor-pointer;
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply bg-gray-200 animate-pulse rounded;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+  .modal-content {
+    @apply bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto;
+  }
+
+  /* Toast */
+  .toast-container {
+    @apply fixed top-4 right-4 z-[100] flex flex-col gap-2;
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 text-center;
+  }
+
+  /* File upload */
+  .dropzone {
+    @apply border-2 border-dashed border-gray-300 rounded-xl p-8 text-center 
+           hover:border-govone-400 hover:bg-govone-50/50 transition-all cursor-pointer;
+  }
+  .dropzone-active {
+    @apply border-govone-500 bg-govone-50;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
