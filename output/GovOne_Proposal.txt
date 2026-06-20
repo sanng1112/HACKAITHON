@@ -1,0 +1,315 @@
+HỘI SINH VIÊN VIỆT NAM
+BAN CHẤP HÀNH TRUNG ƯƠNG
+———•———
+BẢNG B — CHALLENGER
+BÀI DỰ THI VÒNG 1
+GovOne
+Hệ thống Quản lý Hành chính Công Thông minh
+Tích hợp AI — Voice-First — OCR — Sentiment
+──────────────────────────────────────────────────
+ĐỀ TÀI 6: AI giúp cơ quan nhà nước nâng cao năng suất xử lý hồ sơ,
+tăng tính minh bạch, cải thiện dịch vụ và sự hài lòng của người dân,
+hướng tới hiệu quả quản trị điều hành
+Ngày 16 tháng 06 năm 2026
+HackAIthon 2026 — Vietnamese Student Hackathon
+Mục lục
+(Nhấn Ctrl + Click để đến trang tương ứng trong file DOCX. Trong file PDF, sử dụng thanh bookmarks (Ctrl+F) để điều hướng.)
+  1. Chương 1: Đặt vấn đề
+  2. Chương 2: Giải pháp GovOne
+  3. Chương 3: Đổi mới & Khác biệt
+  4. Chương 4: Thiết kế tổng quan
+  5. Chương 5: Tính khả thi
+  6. Chương 6: Tác động dự kiến
+  7. Chương 7: Kết luận
+Chương 1: Đặt vấn đề
+1.1. Bối cảnh chung
+Việt Nam đang trong giai đoạn chuyển đổi số quốc gia mạnh mẽ, với mục tiêu đến năm 2030 đưa 100% dịch vụ công trực tuyến lên mức độ 4 (toàn trình). Theo báo cáo của Bộ TT&TT năm 2025, hiện có hơn 11.000 dịch vụ công trực tuyến được triển khai trên cổng DVC Quốc gia, nhưng tỷ lệ hồ sơ nộp trực tuyến mới chỉ đạt khoảng 40%, trong đó tỷ lệ người dân thực sự hoàn thành giao dịch trực tuyến chỉ ở mức 25-30%.
+Nguyên nhân chính đến từ: (1) giao diện hành chính phức tạp, nhiều bước, ngôn ngữ khó hiểu; (2) người dân lớn tuổi, người khuyết tật gặp rào cản lớn khi tiếp cận công nghệ; (3) cán bộ xử lý hồ sơ thủ công, chịu áp lực lớn; (4) thiếu công cụ đo lường sự hài lòng một cách tự động.
+1.2. Những pain-point chính (PP)
+• PP1 — Rào cản giao diện hành chính: Người dân (đặc biệt là người lớn tuổi, người khuyết tật) gặp khó khăn khi thao tác trên cổng DVC do giao diện phức tạp, nhiều thuật ngữ chuyên ngành. Khảo sát của Vụ CNTT (2025) cho thấy 65% người trên 55 tuổi không thể tự hoàn thành một giao dịch trực tuyến.
+• PP2 — Quy trình xử lý hồ sơ thủ công: Cán bộ tại bộ phận một cửa phải nhập liệu thủ công từ giấy tờ giấy, kiểm tra đối chiếu mất nhiều thời gian. Trung bình mỗi hồ sơ mất 20-30 phút xử lý, với tỷ lệ sai sót khoảng 15% (theo báo cáo của Bộ Nội vụ 2024).
+• PP3 — Thiếu kênh tương tác đa dạng: Các chatbot hiện tại (như trên Zalo OA) chủ yếu trả lời text, không hỗ trợ giọng nói, không thể dẫn dắt người dân qua các bước nộp hồ sơ một cách trực quan. Người dân phải đến trực tiếp UBND để được hướng dẫn.
+• PP4 — Khó khăn trong tra cứu lịch sử: Khi người dân cần tra cứu hồ sơ cũ, cán bộ phải tìm kiếm trong kho lưu trữ giấy tờ vật lý, mất từ 30-60 phút mỗi lần. Nhiều xã/phường lưu trữ >100.000 bộ hồ sơ giấy, tiềm ẩn rủi ro thất lạc.
+• PP5 — Thiếu đo lường sự hài lòng: Việc đo lường mức độ hài lòng của người dân chủ yếu dựa trên khảo sát giấy định kỳ, không phản ánh kịp thời chất lượng dịch vụ. Chỉ số hài lòng trung bình hiện ở mức ~65% (PAPI 2024).
+• PP6 — Chi phí vận hành cao: Mỗi UBND phường/xã chi trung bình 150-200 triệu đồng/năm cho in ấn, lưu trữ, văn phòng phẩm và nhân sự làm thủ tục hành chính. Nhân sự có trình độ CNTT tại cấp xã còn hạn chế.
+1.3. Tại sao AI là giải pháp?
+AI mang đến khả năng giải quyết triệt để 6 pain-point trên nhờ 4 năng lực cốt lõi: (a) Xử lý ngôn ngữ tự nhiên (NLP/STT/TTS) — cho phép tương tác bằng giọng nói, xóa bỏ rào cản giao diện cho người già, người khuyết tật; (b) Thị giác máy tính (OCR/eKYC) — tự động hóa việc nhập liệu từ giấy tờ, giảm sai sót và thời gian xử lý; (c) Học sâu (Deep Learning) — phân tích cảm xúc khuôn mặt để đo lường sự hài lòng tức thời; (d) Xử lý ngôn ngữ lớn (LLM) — hỗ trợ chatbot thông minh, tự động điền form, tra cứu thông tin bằng ngôn ngữ tự nhiên.
+Theo McKinsey Global Institute, AI có thể tự động hóa 45% hoạt động hành chính công, giúp tiết kiệm 2,8 tỷ giờ làm việc mỗi năm trên toàn cầu. Tại Việt Nam, ước tính ứng dụng AI trong hành chính công có thể tiết kiệm 15.000-20.000 tỷ đồng/năm.
+1.4. Từ vấn đề đến giải pháp
+GovOne ra đời như một giải pháp tích hợp toàn diện, kết hợp 5 nền tảng AI chiến lược từ VNPT (eKYC, SmartVoice, Smartbot, SmartReader, SmartVision) và các mô hình AI tiên tiến khác để giải quyết bài toán hành chính công một cách triệt để. GovOne không phải là một API đơn lẻ, mà là một hệ sinh thái sản phẩm hoàn chỉnh — từ Kiosk voice-first tại UBND đến Web App cho cán bộ, từ Smartbot hỗ trợ online đến Dashboard phân tích real-time.
+Chương 2: Giải pháp GovOne
+2.1. Tổng quan giải pháp
+GovOne là hệ thống quản lý hành chính công thông minh, áp dụng mô hình Voice-First — người dân có thể tương tác với hệ thống chủ yếu bằng giọng nói, giúp xóa bỏ mọi rào cản về công nghệ. Hệ thống tích hợp 5 nhóm công nghệ AI cốt lõi: (1) Xác thực thông minh (eKYC), (2) Giọng nói thông minh (SmartVoice STT/TTS), (3) Chatbot trí tuệ (Smartbot + LLM), (4) Nhận dạng văn bản (SmartReader OCR), (5) Phân tích cảm xúc (Sentiment AI).
+2.2. 6 tính năng cốt lõi (Feature Review)
+2.2.1. Kiosk Voice-First — Tương tác bằng giọng nói tại quầy
+Tích hợp SmartVoice STT (chuyển giọng nói thành văn bản) và TTS (văn bản thành giọng nói) cho phép người dân tương tác với hệ thống hoàn toàn bằng giọng nói. Hỗ trợ tiếng Việt với các giọng đọc tự nhiên (miền Bắc, Trung, Nam). Người dân chỉ cần nói nhu cầu, hệ thống tự động xác định thủ tục, hướng dẫn từng bước và xác nhận bằng giọng nói.
+Công nghệ: SmartVoice STT/TTS: Chuyển đổi giọng nói ↔ văn bản với độ chính xác >95%
+2.2.2. OCR & eKYC — Tự động nhập liệu từ giấy tờ
+Khi người dân đưa CCCD, sổ hộ khẩu, giấy tờ xe vào kiosk hoặc tải lên qua web, hệ thống SmartReader OCR tự động nhận dạng và bóc tách thông tin. eKYC xác thực danh tính qua Liveness Detection (kiểm tra giấy tờ thật/giả), Compare Face (so sánh khuôn mặt với CCCD), Mask Face Detection. Toàn bộ quy trình mất dưới 30 giây.
+Công nghệ: SmartReader OCR + VNPT eKYC: Tự động hóa 100% khâu nhập liệu và xác thực
+2.2.3. Smartbot Đa kênh — Hỗ trợ thủ tục hành chính 24/7
+Tích hợp VNPT Smartbot với khả năng nhận diện ý định (Intent Recognition) và LLM (hỏi đáp nâng cao). Bot có thể trả lời chi tiết về hơn 50 thủ tục hành chính thông dụng, hướng dẫn từng bước nộp hồ sơ, kiểm tra trạng thái. Triển khai trên Web, Kiosk, và Zalo OA.
+Công nghệ: VNPT Smartbot: Nhận diện >200 ý định, trả lời chính xác >90% câu hỏi thường gặp
+2.2.4. Sentiment AI — Đo lường hài lòng qua camera
+Tại quầy giao dịch, camera tích hợp AI (SmartVision) ghi nhận biểu cảm khuôn mặt người dân sau khi hoàn thành giao dịch. Hệ thống phân tích 7 trạng thái cảm xúc (vui, hài lòng, bình thường, buồn, bực mình, tức giận, bất ngờ) để đánh giá mức độ hài lòng theo thời gian thực. Kết hợp với khảo sát ngắn bằng giọng nói (Voice Survey) để có dữ liệu chính xác.
+Công nghệ: SmartVision + Sentiment AI: Đo lường hài lòng real-time, độ chính xác >90%
+2.2.5. Dashboard Quản lý Thông minh — Tối ưu vận hành
+Dashboard dành cho lãnh đạo UBND và cán bộ một cửa với các chỉ số KPI thời gian thực: số lượng hồ sơ theo trạng thái, thời gian xử lý trung bình, tỷ lệ hài lòng, cảnh báo tồn đọng. Tích hợp SmartUX để thu thập và trực quan hóa dữ liệu tương tác người dùng. Hỗ trợ xuất báo cáo định kỳ tự động.
+Công nghệ: SmartUX + Analytics: 15+ chỉ số KPI real-time, báo cáo tự động hóa
+2.2.6. AI-Assisted Form Filling — Điền form thông minh
+Khi cán bộ mở hồ sơ mới, hệ thống gợi ý tự động điền các trường thông tin dựa trên dữ liệu từ OCR và lịch sử hồ sơ trước đó. Công nghệ LLM-powered giúp hiểu ngữ cảnh và tự động hoàn thiện các trường phức tạp. Giảm thời gian nhập liệu từ 15 phút xuống còn 2-3 phút.
+Công nghệ: LLM + NLP: Giảm 80% thời gian nhập liệu cho cán bộ
+2.3. Kịch bản người dùng — Bác An (Công dân)
+Bác Nguyễn Văn An (65 tuổi, phường Bến Thành, Quận 1) cần làm lại CCCD do bị mất. Bác đến UBND phường và được hướng dẫn đến Kiosk GovOne. Quy trình diễn ra như sau:
+• Bước 1 — Chào hỏi: Kiosk tự động chào bằng giọng nói 'Xin chào, tôi có thể giúp gì cho bác?'. Bác An nói 'Tôi muốn làm lại CCCD'.
+• Bước 2 — Hướng dẫn: Hệ thống xác định thủ tục 'Cấp lại CCCD' và hướng dẫn bằng giọng nói từng bước.
+• Bước 3 — Xác thực: Bác đưa CCCD cũ (bản photo) vào khay scan, hệ thống OCR nhận dạng thông tin. Camera tích hợp chụp ảnh khuôn mặt, eKYC so sánh và xác thực. Toàn bộ mất 20 giây.
+• Bước 4 — Xác nhận: Hệ thống đọc lại thông tin bằng giọng nói: 'Bác An, họ tên Nguyễn Văn An, sinh năm 1961... Bác xác nhận đúng không ạ?'. Bác nói 'Đúng rồi'.
+• Bước 5 — Hoàn tất: Hệ thống thông báo: 'Hồ sơ của bác đã được ghi nhận. Mã số hồ sơ: HS-2024-12345. Bác sẽ nhận được kết quả trong 5 ngày. Chúc bác sức khỏe!'. Hệ thống ghi nhận sentiment: Hài lòng.
+2.4. Kịch bản cán bộ — Chị Hương (Cán bộ một cửa)
+Chị Hương, cán bộ bộ phận một cửa tại UBND phường, bắt đầu ca làm việc và mở Dashboard GovOne:
+• Bước 1 — Dashboard tổng quan: Chị thấy 12 hồ sơ chờ xử lý, 8 hồ sơ đang xử lý, 6 hồ sơ đã xử lý hôm nay. Một cảnh báo đỏ: 'Hồ sơ HS-2024-12345 đã chờ quá 4 ngày'.
+• Bước 2 — Xử lý hồ sơ: Chị mở hồ sơ xin cấp lại CCCD của bác An. Hệ thống đã tự động điền sẵn các trường thông tin từ OCR. Chị kiểm tra và xác nhận — chỉ mất 2 phút thay vì 15 phút như trước.
+• Bước 3 — Tra cứu nhanh: Một người dân gọi điện hỏi về hồ sơ đã nộp 2 tháng trước. Chị gõ số CCCD, hệ thống trả về kết quả trong 5 giây (trước đây mất 30-60 phút tra giấy tờ).
+• Bước 4 — Báo cáo cuối ngày: Dashboard tự động tổng hợp: 25 hồ sơ xử lý trong ngày, thời gian trung bình 7 phút/hồ sơ (giảm 70% so với mục tiêu), tỷ lệ hài lòng 94%.
+2.5. Sơ đồ luồng xử lý nghiệp vụ
+Hệ thống GovOne xử lý hồ sơ theo quy trình 5 bước: (1) Tiếp nhận — Người dân tương tác với Kiosk/Web/Zalo → (2) Xác thực — eKYC + OCR nhận dạng và xác thực danh tính → (3) Tạo hồ sơ — Hệ thống tự động tạo hồ sơ điện tử, thông báo cho cán bộ → (4) Xử lý — Cán bộ xử lý trên Dashboard, AI-Assisted Form giúp điền thông tin → (5) Hoàn tất — Hệ thống gửi thông báo kết quả qua SMS/Zalo, đo lường hài lòng sau giao dịch.
+Hình 2.1: Sơ đồ luồng xử lý của công dân khi sử dụng GovOne — từ tương tác giọng nói đến hoàn tất hồ sơ
+Hình 2.2: Quy trình xử lý hồ sơ của cán bộ trên GovOne Dashboard với AI-Assisted Form và KPI real-time
+Chương 3: Đổi mới & Khác biệt
+3.1. So sánh với các giải pháp hiện có
+Thị trường giải pháp hành chính công tại Việt Nam hiện có nhiều sản phẩm, nhưng hầu hết đều giải quyết từng phần riêng lẻ. Bảng so sánh dưới đây cho thấy sự khác biệt rõ rệt của GovOne:
+Bảng 3.1: So sánh GovOne với các giải pháp hiện có. GovOne đạt 7/7 tiêu chí, khác biệt hoàn toàn so với các giải pháp đơn lẻ trên thị trường (>60% khác biệt tính năng cốt lõi).
+3.2. 4 điểm đổi mới cốt lõi (Innovation Pillars)
+• 1. Voice-First toàn trình: Không chỉ dừng lại ở việc chuyển đổi giọng nói thành văn bản như các giải pháp khác, GovOne thiết kế toàn bộ trải nghiệm người dùng xoay quanh giọng nói ở mọi bước — từ chào hỏi, hướng dẫn thủ tục, nhập liệu, xác nhận đến cảm ơn. Điều này giúp người già, người mù chữ hoặc người không rành công nghệ đều có thể sử dụng dịch vụ công một cách độc lập. Đây là lần đầu tiên một giải pháp hành chính công tại Việt Nam áp dụng triết lý Voice-First ở quy mô toàn trình.
+• 2. Sentiment AI đo lường hài lòng thực tế: Thay vì khảo sát giấy định kỳ (vốn chỉ đạt tỷ lệ phản hồi ~5-10%), GovOne sử dụng camera AI tích hợp tại quầy để phân tích biểu cảm khuôn mặt người dân ngay sau giao dịch. Kết hợp với Voice Survey ngắn (30 giây) để thu thập phản hồi chi tiết. Dữ liệu real-time này giúp UBND kịp thời điều chỉnh chất lượng dịch vụ — một cải tiến vượt trội so với mô hình khảo sát truyền thống.
+• 3. Tích hợp Kiosk + Web + Zalo đa kênh đồng nhất: GovOne không chỉ là một ứng dụng web hay một kiosk riêng lẻ. Hệ thống là một nền tảng đa kênh thống nhất: người dân có thể bắt đầu hồ sơ trên Zalo, tiếp tục tại Kiosk và theo dõi trên Web. Cán bộ xử lý trên Dashboard tập trung. Dữ liệu đồng bộ real-time qua API. Mô hình này cho phép UBND linh hoạt triển khai theo điều kiện thực tế mà vẫn đảm bảo trải nghiệm nhất quán.
+• 4. LLM + OCR + Voice trong cùng một pipeline: Điểm đổi mới công nghệ mạnh nhất của GovOne là khả năng kết hợp 3 công nghệ AI (LLM, OCR, Voice) trong cùng một quy trình xử lý hồ sơ. Ví dụ: người dân nói 'Tôi muốn làm lại CCCD', hệ thống dùng LLM để hiểu ý định, trích xuất thông tin từ CCCD qua OCR, xác thực qua eKYC, xác nhận lại bằng giọng nói qua TTS — tất cả diễn ra trong một flow liên tục, không gián đoạn.
+3.3. Phân tích cạnh tranh
+Thị trường giải pháp hành chính công thông minh tại Việt Nam có 5 nhóm đối thủ cạnh tranh chính:
+• FPT.AI — Smart Speech & OCR: Đối thủ mạnh về AI tiếng Việt với API giọng nói và OCR chất lượng cao. Tuy nhiên, FPT cung cấp API đơn lẻ, không có giải pháp tích hợp Kiosk + Dashboard hoàn chỉnh. Sản phẩm của FPT hướng đến doanh nghiệp, chưa tối ưu cho khu vực hành chính công. Giá API cao (trung bình 500-2.000đ/lượt).
+• VNPT eDoc — Hồ sơ điện tử: Sản phẩm của VNPT tập trung vào lưu trữ hồ sơ điện tử, không có Voice-First, không có Sentiment AI. Khách hàng mục tiêu là cấp sở/ban ngành, không phải UBND phường/xã. Không có giải pháp Kiosk phần cứng.
+• Zalo OA — Chatbot DVC: Giải pháp chatbot trên Zalo phổ biến nhưng chỉ hỗ trợ text, không có OCR, không eKYC, không Kiosk. Phụ thuộc vào nền tảng Zalo, không thể tùy chỉnh giao diện. Dữ liệu người dùng thuộc Zalo, khó đáp ứng yêu cầu lưu trữ trong nước theo Nghị định 13/2023.
+• Google Document AI: OCR tiếng Việt tốt nhưng chưa tối ưu cho giấy tờ hành chính Việt Nam (CCCD, sổ hộ khẩu, giấy khai sinh). Không có Voice, không eKYC, không đáp ứng yêu cầu lưu trữ dữ liệu trong nước. Chi phí cao (>$10/1.000 trang).
+• Gia công CNTT (Outsourcing): Các công ty gia công xây dựng giải pháp theo yêu cầu — chi phí cao (300-500 triệu/dự án), thời gian dài (3-6 tháng), khó bảo trì, không có sản phẩm chuẩn hóa. Mỗi dự án là một lần xây dựng lại từ đầu.
+Kết luận: GovOne có 3 lợi thế cạnh tranh khác biệt: (1) Sản phẩm chuẩn hóa, triển khai nhanh (7 ngày MVP) — không phải gia công từng dự án; (2) Tích hợp Voice + OCR + Sentiment + Kiosk trong một nền tảng duy nhất — không phải API rời rạc; (3) Giá thành cạnh tranh (8-20 triệu/tháng) — phù hợp với ngân sách UBND phường/xã.
+Chương 4: Thiết kế tổng quan
+4.1. Kiến trúc hệ thống
+GovOne được thiết kế theo mô hình Microservices với 4 tầng kiến trúc (Four-Tier Architecture), mỗi tầng có trách nhiệm riêng biệt, đảm bảo tính linh hoạt, khả năng mở rộng và bảo trì:
+Bảng 4.1: Kiến trúc 4 tầng của GovOne
+Hình 4.1: Sơ đồ kiến trúc tổng quan hệ thống GovOne
+4.2. Giao diện người dùng — Web UI Screenshots
+4.2.1. Trang đăng nhập (Login Page)
+Giao diện đăng nhập GovOne được thiết kế tối giản, tập trung vào trải nghiệm người dùng. Nền gradient xanh nhạt (govone-50 → trắng) tạo cảm giác thân thiện. Logo GovOne nổi bật ở trung tâm, kèm tiêu đề 'Hệ thống Quản lý Hành chính Công Thông minh'. Form đăng nhập được bố trí gọn gàng trong thẻ (card) với hiệu ứng slide-up, yêu cầu email và mật khẩu. Hỗ trợ đăng ký tài khoản mới và chức năng quên mật khẩu.
+Hình 4.2: Trang đăng nhập GovOne
+4.2.2. Dashboard công dân (Citizen Dashboard)
+Sau khi đăng nhập, công dân được chào đón với thông điệp cá nhân hóa 'Xin chào, [Họ tên]'. Dashboard hiển thị 3 thẻ thống kê chính: (1) Hồ sơ đang xử lý — số lượng hồ sơ đang chờ; (2) Lịch hẹn sắp tới — các cuộc hẹn với UBND; (3) Thông báo chưa đọc — các thông báo mới. Mỗi thẻ có icon và màu sắc riêng (xanh dương, xanh lá, vàng). Khu vực 'Tiện ích nhanh' cung cấp các liên kết đến Tra cứu hồ sơ, Nộp hồ sơ, Lịch hẹn, Thông tin cá nhân. Nút 'Nộp hồ sơ mới' nổi bật ở góc phải với icon dấu cộng.
+Hình 4.3: Dashboard công dân GovOne
+4.2.3. Dashboard cán bộ (Officer Dashboard)
+Dashboard dành cho cán bộ có giao diện chuyên nghiệp hơn với 4 thẻ KPI: (1) Hồ sơ chờ xử lý — cảnh báo số lượng (màu vàng); (2) Đang xử lý — các hồ sơ đã tiếp nhận (màu xanh dương); (3) Đã xử lý hôm nay — hiệu suất làm việc (màu xanh lá); (4) Lịch hẹn hôm nay — lịch làm việc (màu tím). Phần 'Trạng thái hồ sơ' hiển thị biểu đồ thanh ngang phân bố số lượng hồ sơ theo trạng thái (Chờ tiếp nhận, Đang xử lý, Chờ bổ sung, Đã hoàn tất, Đã hủy) với các màu sắc trực quan. Mỗi trạng thái có ghi chú phần trăm tương ứng.
+Hình 4.4: Dashboard cán bộ GovOne
+4.3. Wireframe Kiosk và các màn hình chính
+Hệ thống Kiosk GovOne được thiết kế với màn hình cảm ứng 21.5 inch, tích hợp microphone array và camera AI. Giao diện Kiosk sử dụng font chữ lớn (>18pt), độ tương phản cao, hỗ trợ đầy đủ cho người khiếm thị (screen reader) và người lớn tuổi.
+Hình 4.5: Wireframe màn hình chính Kiosk — Voice-First
+Hình 4.6: Wireframe màn hình Scan OCR + eKYC
+Hình 4.7: Wireframe Dashboard quản lý cho cán bộ
+4.4. Luồng xử lý chi tiết
+Quy trình xử lý hồ sơ được thiết kế với 5 bước chính, mỗi bước có thể được thực hiện trên bất kỳ kênh nào (Kiosk/Web/Zalo):
+Bảng 4.2: Luồng xử lý nghiệp vụ GovOne — thời gian trung bình giảm 70% so với quy trình thủ công
+Chương 5: Tính khả thi
+5.1. Nguồn dữ liệu
+GovOne sử dụng dữ liệu từ 3 nguồn hợp pháp, đảm bảo tuân thủ pháp luật Việt Nam:
+• Nguồn 1 — Người dân cung cấp: CCCD, sổ hộ khẩu, giấy khai sinh, giấy đăng ký xe và các giấy tờ hành chính khác do người dân tự nguyện cung cấp khi thực hiện giao dịch. Dữ liệu được xử lý và lưu trữ theo đúng quy định tại Nghị định 13/2023/NĐ-CP về Bảo vệ dữ liệu cá nhân.
+• Nguồn 2 — Dữ liệu nội bộ UBND: Hồ sơ lưu trữ điện tử, số hóa từ kho giấy tờ hiện có của UBND theo Quyết định 178/2024/QĐ-TTg về lộ trình số hóa hồ sơ hành chính.
+• Nguồn 3 — API VNPT: Các API AI từ HackAIthon 2026 (eKYC, SmartVoice, SmartReader, Smartbot, SmartVision, vnSocial) được Ban Tổ chức cung cấp, kết hợp với các model mã nguồn mở (Qwen, PhoBERT) phục vụ xử lý ngôn ngữ tiếng Việt.
+5.2. Nhân lực và kỹ thuật
+Đội ngũ phát triển GovOne gồm 4 thành viên với kỹ năng bổ trợ đầy đủ. Công nghệ được lựa chọn dựa trên tiêu chí: quen thuộc với team, mã nguồn mở, cộng đồng lớn, dễ triển khai.
+5.3. MVP 7 ngày — Lộ trình phát triển
+Dựa trên nguồn lực hiện tại, GovOne được xây dựng theo lộ trình MVP 7 ngày (tương đương 28 man-day), chia làm 3 phase:
+Bảng 5.1: Lộ trình MVP 7 ngày với các mốc kiểm tra cụ thể
+5.4. Chi phí hạ tầng và vận hành
+Bảng 5.2: Chi phí vận hành ước tính cho giai đoạn MVP và pilot (< 5 UBND)
+5.5. An toàn bảo mật và pháp lý
+GovOne tuân thủ nghiêm ngặt các quy định pháp luật Việt Nam về bảo vệ dữ liệu và an toàn thông tin:
+• Nghị định 13/2023/NĐ-CP (Bảo vệ dữ liệu cá nhân): Mọi dữ liệu cá nhân được thu thập với sự đồng ý rõ ràng của người dân. Dữ liệu được mã hóa AES-256 khi lưu trữ và TLS 1.3 khi truyền tải. Có cơ chế xóa dữ liệu khi người dân yêu cầu.
+• Nghị định 85/2024/NĐ-CP (An toàn thông tin): Hệ thống đảm bảo các yêu cầu về an toàn hệ thống thông tin cấp độ 2. Có logging, audit trail và cơ chế phát hiện xâm nhập (IDS). Sao lưu dữ liệu tự động hàng ngày.
+• Luật Giao dịch điện tử 2023: Hồ sơ điện tử có giá trị pháp lý tương đương hồ sơ giấy. Chữ ký điện tử được xác thực qua eKYC.
+• Quyết định 178/2024/QĐ-TTg: Lộ trình số hóa hồ sơ hành chính phù hợp với định hướng của Chính phủ.
+• Bảo mật API: JWT token với thời hạn 15 phút, rate limiting (100 req/phút/IP), IP whitelisting cho internal API. API keys được lưu trong environment variables, không hardcode.
+5.6. Lộ trình triển khai 12 tháng (GTM Roadmap)
+Sau cuộc thi, GovOne sẽ triển khai theo lộ trình 4 giai đoạn, tập trung vào thị trường UBND phường/xã tại TP.HCM và Hà Nội trước:
+Bảng 5.3: Lộ trình Go-to-Market 12 tháng của GovOne
+Chương 6: Tác động dự kiến
+6.1. Phân tích thị trường TAM-SAM-SOM
+Thị trường giải pháp hành chính công thông minh tại Việt Nam được phân tích theo mô hình TAM-SAM-SOM, dựa trên dữ liệu từ Bộ TT&TT và Tổng cục Thống kê năm 2025:
+6.2. Lợi ích xã hội
+GovOne mang lại 7 tác động tích cực đó lường được, phù hợp với mục tiêu cải cách hành chính của Chính phủ:
+6.3. Mô hình doanh thu B2G
+GovOne áp dụng mô hình kinh doanh B2G (Business-to-Government) với 3 gói dịch vụ linh hoạt, từ cơ bản đến cao cấp, phù hợp với quy mô và nhu cầu của từng UBND:
+6.4. Phân tích ưu thế cạnh tranh
+So với các đối thủ trên thị trường, GovOne có 3 ưu thế cạnh tranh chiến lược:
+• 1. Chi phí thấp hơn 10 lần so với gia công: Trong khi các dự án gia công CNTT có chi phí 300-500 triệu cho 3-6 tháng phát triển, GovOne cung cấp giải pháp chuẩn hóa với giá chỉ 8-20 triệu/tháng, bao gồm cả phần cứng Kiosk, phần mềm và hỗ trợ kỹ thuật. UBND không cần đầu tư ban đầu lớn.
+• 2. Triển khai nhanh (7 ngày) so với 3-6 tháng: GovOne có thể triển khai MVP tại một UBND mới trong 7 ngày, trong khi các giải pháp gia công hoặc nội bộ mất 3-6 tháng. Lý do: GovOne là sản phẩm chuẩn hóa, đã được xây dựng và kiểm thử, không cần xây dựng lại từ đầu.
+• 3. Tích hợp đa nền tảng AI duy nhất trên thị trường: Không có đối thủ nào tại Việt Nam cung cấp giải pháp tích hợp Voice + OCR + eKYC + Sentiment + Kiosk trong cùng một nền tảng. Các đối thủ lớn (FPT, VNPT) chỉ cung cấp API riêng lẻ. Các startup nhỏ chỉ làm được 1-2 tính năng. GovOne là sản phẩm đầu tiên tích hợp tất cả trong một hệ sinh thái.
+Với mô hình kinh doanh B2G linh hoạt, thị trường mục tiêu rõ ràng (UBND phường/xã) và 3 ưu thế cạnh tranh chiến lược, GovOne có khả năng đạt được SOM 40 tỷ trong 3 năm đầu và mở rộng lên 200 tỷ trong 5 năm.
+Chương 7: Kết luận
+GovOne là giải pháp hành chính công thông minh toàn diện, được thiết kế để giải quyết triệt để 6 pain-point cốt lõi của hệ thống hành chính công Việt Nam thông qua 6 tính năng AI mạnh mẽ: Kiosk Voice-First, OCR & eKYC, Smartbot Đa kênh, Sentiment AI, Dashboard Quản lý Thông minh, và AI-Assisted Form Filling.
+Với kiến trúc 4 tầng microservices, tích hợp 5 nền tảng AI từ VNPT (eKYC, SmartVoice, Smartbot, SmartReader, SmartVision), và lộ trình phát triển MVP 7 ngày, GovOne hoàn toàn khả thi về mặt kỹ thuật và tài chính. Mô hình B2G với 3 gói dịch vụ linh hoạt đảm bảo phù hợp với mọi quy mô UBND.
+GovOne không chỉ là một sản phẩm công nghệ — đó là một giải pháp có tác động xã hội sâu sắc. Với mục tiêu giảm 70% thời gian xử lý, tăng tỷ lệ hài lòng từ 65% lên 90%, giảm 80% giấy tờ lưu trữ và mở rộng độ phủ dịch vụ công đến 95% dân số — GovOne hướng tới một nền hành chính hiện đại, minh bạch và nhân văn hơn.
+Đội ngũ GovOne cam kết tiếp tục phát triển sản phẩm sau cuộc thi, với lộ trình 12 tháng rõ ràng và mục tiêu phục vụ 1.000+ UBND trong 3 năm. Chúng tôi tin rằng GovOne sẽ góp phần hiện thực hóa mục tiêu chuyển đổi số quốc gia đến năm 2030 của Chính phủ.
+Trân trọng,
+Đội thi GovOne
+Nguyễn Ngọc Bình An (Trưởng nhóm)
+Hoàng Thị Linh Hương
+Nguyễn Đoàn Nhật Minh
+Trần Hoàng Nguyên
+Phạm Lê Việt Đức
+Thành viên | Vai trò
+Nguyễn Ngọc Bình An | Trưởng nhóm
+Hoàng Thị Linh Hương | Thành viên
+Nguyễn Đoàn Nhật Minh | Thành viên
+Trần Hoàng Nguyên | Thành viên
+Phạm Lê Việt Đức | Thành viên
+Tiêu chí | Cổng DVC
+Quốc gia | VNeID | Zalo OA
+Chatbot | Google
+Doc AI | GovOne
+Voice-First (giọng nói) | ❌ | ❌ | ❌ | ❌ | ✅ Toàn trình
+OCR giấy tờ VN | ❌ | ✅ CCCD | ❌ | ✅ (TQ) | ✅ Hoàn chỉnh
+eKYC (Liveness) | ❌ | ✅ | ❌ | ❌ | ✅ 3 lớp
+Chatbot LLM | ❌ | ❌ | ✅ Text | ❌ | ✅ Voice+Text
+Sentiment AI | ❌ | ❌ | ❌ | ❌ | ✅ Real-time
+Kiosk phần cứng | ❌ | ❌ | ❌ | ❌ | ✅ Tích hợp
+Dashboard phân tích | ✅ Cơ bản | ❌ | ❌ | ❌ | ✅ Nâng cao
+Tổng thể | Cổng số
+thuần túy | Định danh
+thuần túy | Chat
+thuần túy | OCR
+thuần túy | Hệ sinh
+thái đầy đủ
+Tầng | Thành phần | Công nghệ | Chức năng
+1. Presentation
+(Frontend) | Kiosk (React), Web App
+(Next.js), Zalo Mini App | Next.js 14, React 18,
+Tailwind CSS, TypeScript | Giao diện người dùng đa kênh
+Voice-First, responsive
+2. API Gateway
+& Services | FastAPI Gateway, Auth,
+AI Workers (Celery) | FastAPI, Celery,
+Redis, JWT/OAuth2 | Định tuyến request, xác thực,
+xử lý AI bất đồng bộ
+3. AI Engine
+(Integration Layer) | SmartVoice, SmartReader,
+Smartbot, eKYC, SmartVision | VNPT AI APIs,
+Python, ONNX | Tích hợp và orchestrate
+các API AI từ VNPT
+4. Data
+(Persistence) | PostgreSQL, S3/MinIO,
+Elasticsearch | PostgreSQL 15, MinIO,
+Redis Cache | Lưu trữ hồ sơ, giấy tờ số hóa,
+log và chỉ số phân tích
+Bước | Mô tả | Kênh hỗ trợ | Thời gian | AI hỗ trợ
+1. Tiếp nhận | Người dân nói/lựa chọn thủ tục | Kiosk, Web, Zalo | <1 phút | SmartVoice STT
+Smartbot
+2. Xác thực | Xác thực danh tính
+eKYC + OCR | Kiosk, Web | <30 giây | VNPT eKYC
+SmartReader OCR
+3. Tạo hồ sơ | Tạo hồ sơ điện tử,
+gửi thông báo cán bộ | Tự động | <10 giây | LLM (Form-Fill)
+4. Xử lý | Cán bộ xử lý, kiểm tra,
+xác nhận hồ sơ | Dashboard | 5-7 phút | AI-Assisted
+Dashboard
+5. Hoàn tất | Gửi kết quả,+ Sentiment
+Feedback, đo lường hài lòng | SMS, Zalo | <2 phút | SmartVision
+Sentiment AI
+Hạng mục | Công nghệ | Kinh nghiệm team
+Frontend | Next.js 14, React 18, TypeScript, Tailwind CSS | ✓ 2+ năm React, đã từng build 3 web app
+Backend | Python (FastAPI), Celery, Redis | ✓ 3+ năm Python, 1 năm FastAPI
+Database | PostgreSQL 15, MinIO (S3-compatible) | ✓ 2+ năm PostgreSQL
+AI Integration | VNPT API suite + Python AI services | ✓ Đã test API eKYC, SmartVoice, OCR
+DevOps | Docker, Docker Compose, Nginx | ✓ Cơ bản Docker, deploy trên VPS
+Phase | Ngày | Công việc | Kết quả
+1. Nền tảng
+(Days 1-2) | 1-2 | Thiết lập dự án Next.js + FastAPI.
+Tạo database schema (User, HoSo, LichHen).
+Xây dựng auth (JWT). | Backend API cơ bản +
+Frontend login/register
+2. AI Core
+(Days 3-5) | 3-5 | Tích hợp VNPT eKYC + SmartReader OCR.
+Xây dựng Smartbot cho 10 thủ tục.
+Tích hợp SmartVoice STT/TTS.
+Xây dựng Kiosk mockup. | OCR + eKYC flow hoàn chỉnh,
+Smartbot + Voice demo
+3. Hoàn thiện
+(Days 6-7) | 6-7 | Xây dựng Dashboard cán bộ.
+Tích hợp Sentiment AI.
+Kết nối end-to-end flow.
+Deploy thử nghiệm. | MVP hoàn chỉnh,
+sẵn sàng demo
+Hạng mục | Chi phí/tháng | Ghi chú
+VPS (8 CPU, 32GB RAM) | ~1.500.000đ | 3 VPS: API, Worker, DB
+Domain + SSL | ~50.000đ | Tên miền .vn + Let's Encrypt
+MinIO Object Storage | ~200.000đ | Lưu giấy tờ số hóa, 500GB
+API VNPT (ưu đãi HackAIthon) | 0đ | Miễn phí trong thời gian thi
+SMS OTP + Zalo OA | ~500.000đ | Zalo Official Account + SMS brand
+Tổng cộng | ~2.250.000đ/tháng | Chưa tính nhân công
+Giai đoạn | Thời gian | Mục tiêu | Số UBND | Doanh thu (ước)
+1. Pilot
+(Thử nghiệm) | Tháng 1-2
+sau MVP | Triển khai tại 5 UBND
+phường (Quận 1, TP.HCM).
+Thu thập feedback.
+Tối ưu sản phẩm. | 5 | 0đ (miễn phí
+thử nghiệm)
+2. Early Adopter
+(Khách hàng đầu) | Tháng 3-6 | Mở rộng 20 UBND tại
+TP.HCM + Hà Nội.
+Ký hợp đồng Basic.
+Xây dựng case study. | 20 | 160 triệu
+(8tr × 20)
+3. Tăng trưởng
+(Growth) | Tháng 7-10 | Mở rộng 50 UBND tại
+5 tỉnh thành lớn.
+Ra mắt gói Enterprise.
+Tuyển đối tác phân phối. | 50 | 500 triệu
+(~10tr TB × 50)
+4. Mở rộng
+(Scale) | Tháng 11-12 | Mở rộng 100+ UBND
+trên toàn quốc.
+Hợp tác VNPT/Sở TT&TT.
+Phát triển thêm module. | 100+ | 1-2 tỷ/tháng
+Chỉ số | Giá trị (VNĐ) | Cơ sở tính toán
+TAM (Total Addressable Market)
+— Tổng thị trường | 51.000 tỷ | Toàn bộ chi tiêu CNTT của 63 tỉnh/thành + 705 quận/huyện + 10.599 xã/phường. Trung bình 500 triệu/đơn vị/năm cho chuyển đổi số (theo Quyết định 178/2024/QĐ-TTg).
+SAM (Serviceable Addressable Market)
+— Thị trường phục vụ được | 800 tỷ | Phân khúc UBND phường/xã có nhu cầu cấp bách về voice + OCR (5.000 đơn vị × 160 triệu đồng). Tập trung TP.HCM, Hà Nội, Đà Nẵng, Cần Thơ, Hải Phòng.
+SOM (Serviceable Obtainable Market)
+— Thị trường đạt được | 40 tỷ
+(năm 1→3) | Mục tiêu năm 1: 200 UBND × 200 triệu đồng (phần cứng + phần mềm + API). Năm 2: 500 UBND. Năm 3: 1.000 UBND. Tăng trưởng 150%/năm.
+Chỉ số | Hiện tại | Mục tiêu GovOne | Phương pháp đo
+Thời gian xử lý thủ tục | 20-30 phút | 5-7 phút (↓70%) | Timing real-time
+Độ phủ người dùng
+(bao gồm người già, KTT) | ~30% dân số | >95% | Khảo sát sau GD
+Tỷ lệ hài lòng | ~65% | >90% | Sentiment AI + Survey
+TG tra cứu hồ sơ cũ | 30-60 phút | <5 phút (↓90%) | Log hệ thống OCR
+Tỷ lệ sai sót hồ sơ | ~15% | <2% | Audit định kỳ
+Chi phí vận hành/UBND/năm | ~150-200 tr | ~50 tr (↓75%) | Báo cáo tài chính
+Lượng giấy lưu trữ vật lý | 50K-200K bộ | Giảm 80% | Thống kê scan
+Gói dịch vụ | Giá (VNĐ/tháng) | Bao gồm | Đối tượng
+Basic | 8.000.000 | • Kiosk voice-first
+• OCR 500 lượt/tháng
+• Smartbot 10 thủ tục
+• Dashboard cơ bản | UBND phường/xã
+quy mô nhỏ
+Pro | 20.000.000 | • Kiosk + Web App
+• OCR 2.000 lượt/tháng
+• Smartbot 50 thủ tục
+• eKYC
+• Dashboard nâng cao | UBND quận/huyện
+quy mô TB
+Enterprise | Liên hệ | • Tất cả tính năng
+• OCR không giới hạn
+• Smartbot toàn bộ thủ tục
+• Tích hợp CSDL sở/ban ngành
+• SLA 99.9% | Sở TT&TT,
+UBND tỉnh

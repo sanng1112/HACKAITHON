@@ -1,46 +1,133 @@
 #!/usr/bin/env python3
-import os
+"""
+Verify the generated proposal content for HackAIthon 2026 round 1 requirements.
+Usage: python3 verify_content.py [path_to_docx]
+"""
+import os, sys
 from docx import Document
 
-def verify():
-    project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    doc_path = os.path.join(project_dir, 'proposal.docx')
-    pdf_path = os.path.join(project_dir, 'proposal.pdf')
-    assets_dir = os.path.join(project_dir, 'assets')
-    print('='*60); print('GOVONE PROPOSAL VERIFICATION'); print('='*60)
-    
-    if not os.path.isfile(doc_path): print(f'❌ proposal.docx not found'); return False
-    print(f'✅ proposal.docx ({os.path.getsize(doc_path)/1024:.1f} KB)')
-    if os.path.isfile(pdf_path): print(f'✅ proposal.pdf ({os.path.getsize(pdf_path)/1024:.1f} KB)')
-    else: print('⚠️ proposal.pdf not found')
-    
-    doc = Document(doc_path)
-    paragraphs = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
-    print(f'\n📊 Statistics: Paragraphs: {len(doc.paragraphs)}, Tables: {len(doc.tables)}')
-    
-    print(f'\n📋 Sections Check:')
-    all_ok = True
-    for keyword, name in [('ĐẶT VẤN ĐỀ','1. Đặt vấn đề'),('GIẢI PHÁP','2. Giải pháp'),('THIẾT KẾ','3. Thiết kế'),('KHẢ THI','4. Tính khả thi'),('ĐỔI MỚI','5. Đổi mới'),('TÁC ĐỘNG','6. Tác động'),('KẾT LUẬN','7. Kết luận')]:
-        found = any(keyword.upper() in t.upper() for t in paragraphs)
-        if not found: all_ok = False
-        print(f'   {"✅" if found else "❌"} Section {name}')
-    
-    print(f'\n🔍 Key Content Check:')
-    for name, keyword in [('Tên "GovOne"','GOVONE'),('Đề tài 6','ĐỀ TÀI 6'),('SmartVoice','SMARTVOICE'),('SmartReader','SMARTREADER'),('eKYC','EKYC'),('SmartVision','SMARTVISION'),('Pain-point PP1','PP1'),('TAM-SAM-SOM','TAM'),('Basic/Pro/Enterprise','BASIC'),('MVP 7 ngày','7 NGÀY'),('Header footer','GOVONE — ĐỘI THI')]:
-        found = any(keyword.upper() in t.upper() for t in paragraphs)
-        if not found: all_ok = False
-        print(f'   {"✅" if found else "❌"} {name}')
-    
-    print(f'\n🖼️ Assets Check:')
-    for asset in ['logo-govone.png','architecture-diagram.png','user-flow-citizen.png','user-flow-officer.png','wireframe-kiosk.png','wireframe-scan.png','wireframe-dashboard.png']:
-        path = os.path.join(assets_dir, asset)
-        if os.path.isfile(path): print(f'   ✅ {asset} ({os.path.getsize(path)/1024:.1f} KB)')
-        else: print(f'   ❌ {asset} MISSING'); all_ok = False
-    
-    print(f'\n{"="*60}')
-    if all_ok: print('🎯 VERIFICATION PASSED! All content complete.')
-    else: print('⚠️ VERIFICATION PARTIAL — Some items need attention.')
-    return all_ok
+def get_all_text(doc):
+    """Extract text from paragraphs AND tables."""
+    texts = []
+    for p in doc.paragraphs:
+        texts.append(p.text)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for p in cell.paragraphs:
+                    texts.append(p.text)
+    return "\n".join(texts)
 
-if __name__ == '__main__':
-    verify()
+def get_all_headers_footers(doc):
+    texts = []
+    for section in doc.sections:
+        header = section.header
+        for p in header.paragraphs:
+            texts.append(p.text)
+        footer = section.footer
+        for p in footer.paragraphs:
+            texts.append(p.text)
+    return "\n".join(texts)
+
+def check_content(doc, full_text):
+    results = []
+
+    # ── Required sections based on contest rules ──
+    sections = [
+        ("Tên sản phẩm 'GovOne'", "Tên sản phẩm", "GovOne"),
+        ("Chương 1: Đặt vấn đề", "Đặt vấn đề", "Đặt vấn đề"),
+        ("Chương 7: Kết luận", "Kết luận", "Kết luận"),
+    ]
+    for name, _, keyword in sections:
+        found = keyword.lower() in full_text.lower()
+        results.append((name, "✅" if found else "❌"))
+
+    # ── Scoring criteria alignment ──
+    criteria = [
+        ("Tính phù hợp (Pain-points)", "pain-point"),
+        ("Tính đổi mới (Voice-First)", "Voice-First"),
+        ("Tính khả thi (Kiến trúc 4 tầng)", "4 tầng"),
+        ("Tính khả thi (MVP 7 ngày)", "7 ngày"),
+        ("Tính khả thi (Chi phí vận hành)", "2.250.000"),
+        ("Tác động (TAM-SAM-SOM)", "TAM"),
+        ("Tác động (Mô hình doanh thu)", "B2G"),
+        ("Tác động (Lợi ích xã hội)", "95%"),
+        ("Chất lượng (Sơ đồ kiến trúc)", "kiến trúc tổng quan"),
+        ("Chất lượng (Wireframe)", "Wireframe"),
+        ("Chất lượng (Web UI Screenshot)", "web-login"),
+    ]
+    for name, keyword in criteria:
+        found = keyword.lower() in full_text.lower()
+        results.append((name, "✅" if found else "❌"))
+
+    # ── VNPT APIs ──
+    apis = ["VNPT eKYC", "SmartVoice", "Smartbot", "SmartReader", "SmartVision"]
+    for api in apis:
+        found = api.lower() in full_text.lower()
+        results.append((f"API: {api}", "✅" if found else "❌"))
+
+    # ── Key terms ──
+    terms = [
+        "Đề tài 6", "PP1", "Voice-First", "OCR", "eKYC", "Sentiment AI",
+        "Dashboard", "Next.js", "FastAPI", "PostgreSQL",
+        "Nghị định 13/2023", "Bảo mật", "MVP", "GTM",
+    ]
+    for term in terms:
+        found = term.lower() in full_text.lower()
+        results.append((f"Term: {term}", "✅" if found else "❌"))
+
+    # ── Team info ──
+    members = ["Nguyễn Ngọc Bình An", "Hoàng Thị Linh Hương", "Nguyễn Đoàn Nhật Minh", "Trần Hoàng Nguyên", "Phạm Lê Việt Đức"]
+    for m in members:
+        found = m.lower() in full_text.lower()
+        results.append((f"Thành viên: {m}", "✅" if found else "❌"))
+
+    # ── Assets ──
+    assets_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets")
+    assets = ["architecture-diagram.png", "wireframe-kiosk.png", "wireframe-scan.png",
+              "wireframe-dashboard.png", "user-flow-citizen.png", "user-flow-officer.png",
+              "web-login.png", "web-citizen-dashboard.png", "web-officer-dashboard.png"]
+    for a in assets:
+        found = os.path.exists(os.path.join(assets_dir, a))
+        results.append((f"Asset: {a}", "✅" if found else "❌"))
+
+    return results
+
+def main(doc_path=None):
+    if doc_path is None:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        project_dir = os.path.dirname(script_dir)
+        doc_path = os.path.join(project_dir, "proposal.docx")
+
+    if not os.path.exists(doc_path):
+        # Try output path
+        output_path = os.path.join(os.path.dirname(os.path.dirname(script_dir)), "output", "GovOne_Proposal.docx")
+        if os.path.exists(output_path):
+            doc_path = output_path
+        else:
+            print(f"❌ Cannot find proposal file. Checked: {doc_path}")
+            return
+
+    print(f"📖 Verifying: {doc_path}")
+    doc = Document(doc_path)
+    full_text = get_all_text(doc) + "\n" + get_all_headers_footers(doc)
+
+    results = check_content(doc, full_text)
+
+    passed = sum(1 for _, s in results if "✅" in s)
+    failed = sum(1 for _, s in results if "❌" in s)
+
+    print(f"\n{'='*60}")
+    print(f"  VERIFICATION REPORT")
+    print(f"{'='*60}")
+    for name, status in results:
+        print(f"  {status}  {name}")
+    print(f"{'='*60}")
+    print(f"  ✅ Passed: {passed}  |  ❌ Failed: {failed}  |  Total: {len(results)}")
+    print(f"{'='*60}")
+
+    return passed, failed
+
+if __name__ == "__main__":
+    doc_path = sys.argv[1] if len(sys.argv) > 1 else None
+    main(doc_path)

@@ -26,7 +26,7 @@ def add_header_footer(doc):
     for section in doc.sections:
         header = section.header; header.is_linked_to_previous = False
         hp = header.paragraphs[0]; hp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        r = hp.add_run('GovOne — Đội thi [Tên đội] — Hackathon ĐMST 2026')
+        r = hp.add_run('GovOne — Đội thi GovOne Team — Hackathon ĐMST 2026')
         set_font(r, size=10, color=RGBColor(0x66, 0x66, 0x66))
         footer = section.footer; footer.is_linked_to_previous = False
         fp = footer.paragraphs[0]; fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
